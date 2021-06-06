@@ -1,5 +1,6 @@
 ﻿@page
 @model IndexModel
+@using System.Security.Claims
 @{
     ViewData["Title"] = "Home page";
 }
@@ -8,3 +9,21 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in HttpContext.User.Claims)
+        {
+            <tr>
+                <td>@a.Type</td>
+                <td>@a.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
