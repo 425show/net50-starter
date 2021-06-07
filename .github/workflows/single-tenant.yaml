@@ -43,7 +43,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Configure App Service settings
-    - uses: azure/appservice-settings@v1
+      uses: azure/appservice-settings@v1
       with:
         app-name: {{ env.APPSERVICE_NAME }}
         app-settings-json: ${{ secrets.AZURE_SINGLETENANT_SETTINGS }}
