@@ -1,14 +1,17 @@
 ﻿@page
 @model IndexModel
 @using System.Security.Claims
+@using System.Linq
 @{
     ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Claims</h1>
+    <p>These claim values match those in the id_token, however their names are different due to how dotnet parses them (e.g., the http://schemas... prefixes on many).</p>
 </div>
+
+<h5>iss: @string.Join(',', HttpContext.User.Claims.Select(x => x.Issuer).Distinct())</h5>
 
 <table class="table table-responsive">
     <thead>
