@@ -1,0 +1,51 @@
+# Docs for the Azure Web Apps Deploy action: https://go.microsoft.com/fwlink/?linkid=2134798
+# More GitHub Actions for Azure: https://go.microsoft.com/fwlink/?linkid=2135048
+
+name: multitenant
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  APPSERVICE_NAME: 425mutli
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 'Checkout Github Action'
+      uses: actions/checkout@master
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+
+    - name: dotnet publish
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+
+    - name: Run Azure webapp deploy action using publish profile credentials
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: {{ env.APPSERVICE_NAME }}
+        slot-name: Production
+        publish-profile: ${{ secrets.AZURE_MULTITENANT_WEBAPP }}
+        package: ${{env.DOTNET_ROOT}}/myapp
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Configure App Service settings
+    - uses: azure/appservice-settings@v1
+      with:
+        app-name: {{ env.APPSERVICE_NAME }}
+        app-settings-json: ${{ secrets.AZURE_MULTITENANT_SETTINGS }}
+      id: settings
+    - run: echo "The webapp-url is ${{ steps.settings.outputs.webapp-url }}"

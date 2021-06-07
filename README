@@ -1,0 +1,7 @@
+# single- and multi-tenant aad apps
+
+The same app deployed to two app services with two configurations:
+- (https://single.identitycrisis.dev) single-tenant - only members of the owning directory can sign-in here
+- (https://multi.identitycrisis.dev) multi-tenant - any Azure AD account can sign-in here
+
+Note the workflow differences are limited to a blob of appsettings, which are available in [azure.appSettings.multitenant.json] and [azure.appSettings.singleTenant.json].

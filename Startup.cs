@@ -33,13 +33,19 @@ namespace _425multi
             services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
                 .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
 
+            services.Configure<MicrosoftIdentityOptions>(x =>
+            {
+                //x.UsePkce = true; // only required pre-net50 - pkce is on by default in net50
+                x.ResponseType = "code"; // force authorization_code, with no hybrid/implicit
+            });
+
             services.AddAuthorization(options =>
             {
                 // By default, all incoming requests will be authorized according to the default policy
                 options.FallbackPolicy = options.DefaultPolicy;
             });
             services.AddRazorPages()
-                .AddMvcOptions(options => {})
+                .AddMvcOptions(options => { })
                 .AddMicrosoftIdentityUI();
         }
 

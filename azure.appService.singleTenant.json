@@ -1,0 +1,27 @@
+[
+  {
+    "name": "AzureAd__Instance",
+    "value": "https://login.microsoftonline.com/",
+    "slotSetting": false
+  },
+  {
+    "name": "AzureAd__TenantId",
+    "value": "",
+    "slotSetting": false
+  },
+  {
+    "name": "AzureAd__ClientSecret",
+    "value": "",
+    "slotSetting": false
+  },
+  {
+    "name": "AzureAd__ClientId",
+    "value": "",
+    "slotSetting": false
+  },
+  {
+    "name": "AzureAd__CallbackPath",
+    "value": "/signin-oidc",
+    "slotSetting": false
+  }
+]
