@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace _425multi.Pages
+namespace net50_starter.Pages
 {
     public class PrivacyModel : PageModel
     {

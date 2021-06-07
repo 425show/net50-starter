@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-_425multi-65850A8A-5174-45D1-AA69-69524082638A</UserSecretsId>
-    <RootNamespace>starter</RootNamespace>
+    <UserSecretsId>aspnet-net50_starter-65850A8A-5174-45D1-AA69-69524082638A</UserSecretsId>
+    <RootNamespace>net50_starter</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

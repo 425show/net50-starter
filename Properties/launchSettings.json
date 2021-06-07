@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "_425multi": {
+    "net50_starter": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
